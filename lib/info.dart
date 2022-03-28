@@ -1,0 +1,1 @@
+const double MUSICPLAYERHEIGHT = 100.00;
