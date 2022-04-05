@@ -14,11 +14,11 @@ class SongObject {
 
   factory SongObject.fromJson(Map<String, dynamic> json) {
     return SongObject(
-        id: json['tracks']['id'],
-        title: json['tracks']['name'],
-        artist: json['tracks']['artistName'],
-        albumID: json['tracks']['albumID'],
+        id: json['id'],
+        title: json['name'],
+        artist: json['artistName'],
+        albumID: json['albumId'],
         songImageURL:
-            'https://api.napster.com/imageserver/v2/albums/${json['tracks']['albumID']}/images/70x70.jpg');
+            'https://api.napster.com/imageserver/v2/albums/${json['albumId']}/images/70x70.jpg');
   }
 }

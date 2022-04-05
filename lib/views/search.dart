@@ -73,10 +73,14 @@ class _SearchPageState extends State<SearchPage> {
               return ListView.builder(
                 itemCount: data.length,
                 itemBuilder: (context, index) {
-                  return IndividualSongWidget(
-                      title: data[index].title,
-                      artist: data[index].artist,
-                      songImageURL: data[index].songImageURL);
+                  // return IndividualSongWidget(
+                  //   title: data[index].title,
+                  //   artist: data[index].artist,
+                  //   songImageURL: data[index].songImageURL,
+                  //   songID: data[index].id,
+                  // );
+                  return _songWidget(data[index].title, data[index].artist,
+                      data[index].songImageURL, data[index].id);
                 },
               );
             } else {
@@ -86,6 +90,54 @@ class _SearchPageState extends State<SearchPage> {
     } else {
       return Container();
     }
+  }
+
+  void songCellTapped(String id) {
+    debugPrint("tapped");
+  }
+
+  Widget _songWidget(
+      String title, String artist, String songImageURL, String id) {
+    debugPrint(songImageURL);
+    return GestureDetector(
+      onTap: () => songCellTapped(id),
+      child: Container(
+        color: Colors.black,
+        height: 75,
+        padding: EdgeInsets.all(5),
+        width: MediaQuery.of(context).size.width,
+        child: Container(
+          // padding: const EdgeInsets.all(5),
+          height: 70,
+          width: MediaQuery.of(context).size.width,
+          // margin: EdgeInsets.all(2),
+          color: Colors.grey,
+          child: Row(
+            children: [
+              Container(
+                width: 70,
+                height: 70,
+                child: Image(image: NetworkImage(songImageURL)),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(title),
+                  Text(artist),
+                ],
+              ),
+              Container(
+                alignment: Alignment.centerRight,
+                child: ElevatedButton(
+                  onPressed: (() => debugPrint("add")),
+                  child: const Icon(Icons.add_circle_outline),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   void _searchPressed() {
@@ -107,7 +159,7 @@ class _SearchPageState extends State<SearchPage> {
     });
   }
 
-  // void _
+  // void _4
 //     return Scaffold(
 //       body: CustomScrollView(
 //         slivers: [
