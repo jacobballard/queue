@@ -1,66 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:queue/info.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
+import 'package:queue/models/queue_object.dart';
+import 'package:queue/models/song_object.dart';
+import 'package:queue/views/each_song.dart';
+import '../helpers/queue_dao.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
-
+  final queueDao = QueueDao();
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final queueDao = QueueDao();
+
+  ScrollController _scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Container(
-        padding: EdgeInsets.all(5),
-        child: Column(
-            // children: <Widget>[
-            //   StreamBuilder<QuerySnapshot>(
-            //     stream:
-            //         chatReference.orderBy('time', descending: true).snapshots(),
-            //     builder: (BuildContext context,
-            //         AsyncSnapshot<QuerySnapshot> snapshot) {
-            //       if (!snapshot.hasData) return new Text("No Chat");
-            //       return Expanded(
-            //         child: new ListView(
-            //           reverse: true,
-            //           children: generateMessages(snapshot),
-            //         ),
-            //       );
-            //     },
-            //   ),
-            //   new Divider(height: 1.0),
-            //   new Container(
-            //     decoration: new BoxDecoration(color: Theme.of(context).cardColor),
-            //     child: _buildTextComposer(),
-            //   ),
-            //   new Builder(builder: (BuildContext context) {
-            //     return new Container(width: 0.0, height: 0.0);
-            //   })
-            // ],
-            ),
-      ),
-    );
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        body: Expanded(
+          child: FirebaseAnimatedList(
+            controller: _scrollController,
+            query: widget.queueDao.getQueueQuery(),
+            itemBuilder: (context, snapshot, animation, index) {
+              final json = snapshot.value as Map<String, dynamic>;
+              final queue = QueueObject.fromJson(json);
+              //This looks broken.  How does it know index of the list of songs.  Need to rethink request
+              return IndividualSongWidget(
+                  title: (queue.songs[index] as SongObject).title,
+                  artist: (queue.songs[index] as SongObject).artist,
+                  songImageURL: (queue.songs[index] as SongObject).songImageURL,
+                  songID: (queue.songs[index] as SongObject).id);
+            },
+          ),
+        ));
   }
-
-//   Widget _getMessageList() {
-//     return Expanded(
-//       child: FirebaseAnimatedList(
-//         controller: _scrollController,
-//         query: widget.messageDao.getMessageQuery(),
-//         itemBuilder: (context, snapshot, animation, index) {
-//           final json = snapshot.value as Map<dynamic, dynamic>;
-//           final message = Message.fromJson(json);
-//           return MessageWidget(message.text, message.date);
-//         },
-//       ),
-//     );
-//   }
 }

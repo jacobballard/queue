@@ -37,7 +37,7 @@ class _QTabBarState extends State<QTabBar> with SingleTickerProviderStateMixin {
       ),
       body: TabBarView(
         controller: _tabController,
-        children: const [
+        children: [
           MyHomePage(
             title: "home",
           ),

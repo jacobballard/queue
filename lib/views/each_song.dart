@@ -21,50 +21,26 @@ class IndividualSongWidget extends StatefulWidget {
 class _IndividualSongWidgetState extends State<IndividualSongWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 70,
-      margin: EdgeInsets.all(5),
-      color: Colors.blue,
-      // child:.,.. Text("$")
+    return Padding(
+      padding: const EdgeInsets.only(left: 1, top: 1, right: 1, bottom: 1),
+      child: Container(
+        child: Row(
+          children: [
+            Container(
+              width: 70,
+              height: 70,
+              child: Image(image: NetworkImage(widget.songImageURL)),
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(widget.title),
+                Text(widget.artist),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
-
-    // return ConstrainedBox(
-    //   constraints: BoxConstraints(
-    //     maxHeight: MediaQuery.of(context).size.height,
-    //     maxWidth: MediaQuery.of(context).size.width,
-    // //   ),
-    //   child: Row(children: [
-    //     Container(
-    //       child: Image.network(
-    //         widget.songImageURL,
-    //         fit: BoxFit.fill,
-    //         loadingBuilder: (BuildContext context, Widget child,
-    //             ImageChunkEvent? loadingProgress) {
-    //           if (loadingProgress == null) return child;
-    //           return Center(
-    //             child: CircularProgressIndicator(
-    //               value: loadingProgress.expectedTotalBytes != null
-    //                   ? loadingProgress.cumulativeBytesLoaded /
-    //                       loadingProgress.expectedTotalBytes!
-    //                   : null,
-    //             ),
-    //           );
-    //         },
-    //       ),
-    //       width: 50,
-    //       height: 50,
-    //       color: Colors.cyan,
-    //     ),
-    //     Column(
-    //       children: [
-    //         Text(widget.title),
-    //         Text(widget.artist),
-    //       ],
-    //     ),
-    //     ElevatedButton(
-    //         onPressed: () => debugPrint("add to queue"),
-    //         child: const Icon(Icons.add_circle_outline_outlined))
-    //   ]),
-    // );
   }
 }

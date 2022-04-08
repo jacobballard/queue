@@ -21,4 +21,13 @@ class SongObject {
         songImageURL:
             'https://api.napster.com/imageserver/v2/albums/${json['albumId']}/images/70x70.jpg');
   }
+
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'name': title,
+        'artistName': artist,
+        "albumId": albumID,
+        "songImageURL":
+            'https://api.napster.com/imageserver/v2/albums/${albumID}/images/70x70.jpg',
+      };
 }
