@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "109221955317",
+    "firebase_url": "https://queue-f577d-default-rtdb.firebaseio.com",
+    "project_id": "queue-f577d",
+    "storage_bucket": "queue-f577d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109221955317:android:a389def32b8436e72427bc",
+        "android_client_info": {
+          "package_name": "com.ballard.queue"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "109221955317-494rv3thflium9t5ulf3phnkh83qmmkq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhOBEot4YyBBw952yg90qyMEb1DpCLBKA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "109221955317-494rv3thflium9t5ulf3phnkh83qmmkq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "109221955317-4n80s797r2patj7qt82ih1q6ndt5k0sm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ballard.queue"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

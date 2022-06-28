@@ -5,8 +5,8 @@ import 'package:queue/views/search.dart';
 import 'package:queue/info.dart';
 
 class QTabBar extends StatefulWidget {
-  const QTabBar({Key? key}) : super(key: key);
-
+  const QTabBar({Key? key, required this.id}) : super(key: key);
+  final String id;
   @override
   _QTabBarState createState() => _QTabBarState();
 }
@@ -42,7 +42,7 @@ class _QTabBarState extends State<QTabBar> with SingleTickerProviderStateMixin {
             title: "home",
           ),
           SearchPage(
-            title: "search",
+            id: widget.id,
           ),
           // SubmitPage(
           //   onSubmit: () => showCupertinoDialog(

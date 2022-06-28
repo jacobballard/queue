@@ -100,5 +100,38 @@
       loadMainDartJs();
     }
   </script>
+    
+    <script src="https://www.gstatic.com/firebasejs/1.15.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.12/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.3.15/firebase-auth.js"></script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    // import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+    // import { getAuth } from "firebase/auth";
+    // import { getDatabase } from "firebase/database";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCGcbDaAnl4qyhHnDfj-Cz2MIgQ8PacUvw",
+      authDomain: "queue-f577d.firebaseapp.com",
+      databaseURL: "https://queue-f577d-default-rtdb.firebaseio.com",
+      projectId: "queue-f577d",
+      storageBucket: "queue-f577d.appspot.com",
+      messagingSenderId: "109221955317",
+      appId: "1:109221955317:web:86d02b2720ed04312427bc",
+      measurementId: "G-4HWGD38FE2"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app)
+    const database = getDatabase(app);
+  </script>
+  <script src="main.dart.js" type="application/javascript"></script>
 </body>
 </html>

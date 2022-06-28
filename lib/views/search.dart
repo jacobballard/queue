@@ -5,8 +5,8 @@ import 'package:queue/models/song_object.dart';
 import 'package:queue/helpers/search_requests.dart';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const SearchPage({Key? key, required this.id}) : super(key: key);
+  final String id;
 
   @override
   State<SearchPage> createState() => _SearchPageState();
